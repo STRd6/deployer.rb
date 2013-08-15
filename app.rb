@@ -1,7 +1,16 @@
+require "json"
 require "pry" if ENV["RACK_ENV"] == "development"
 require "sinatra"
 
+use Rack::Logger
+
+helpers do
+  def logger
+    request.logger
+  end
+end
+
 post "/" do
-  push = JSON.parse(params[:payload])
-  "I got some JSON: #{push.inspect}"
+  logger.info params.inspect
+  params.inspect
 end
