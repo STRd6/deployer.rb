@@ -11,6 +11,10 @@ helpers do
 end
 
 post "/" do
-  logger.info params.inspect
-  params.inspect
+  payload = params[:payload]
+
+  logger.info payload.inspect
+  logger.info payload[:ref]
+
+  payload.inspect
 end
